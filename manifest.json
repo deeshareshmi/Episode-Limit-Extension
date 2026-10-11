@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Netflix Daily Pause",
+  "version": "0.5.1",
+  "description": "Personal, local daily Netflix playback limits.",
+  "permissions": ["storage", "declarativeNetRequest", "alarms"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Netflix Daily Pause" },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "content_scripts": [{
+    "matches": ["*://*.netflix.com/*"],
+    "js": ["engine.js", "detector.js", "tracker.js", "content.js"],
+    "run_at": "document_idle"
+  }]
+}
